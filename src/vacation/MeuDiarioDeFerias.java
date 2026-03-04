@@ -1,5 +1,7 @@
 package vacation;
+
 import java.util.ArrayList;
+import java.util.Collections; 
 import java.util.Comparator;
 import java.util.List;
 
@@ -21,8 +23,12 @@ public class MeuDiarioDeFerias {
         if (atividades.isEmpty()) {
             throw new IllegalStateException("O diário está vazio.");
         }
+        
         List<AtividadeDeFerias> listaOrdenada = new ArrayList<>(atividades);
-        listaOrdenada.sort(Comparator.comparingDouble(AtividadeDeFerias::getNota).reversed());
+        
+        // Substituição do método de ordenação.
+        Collections.sort(listaOrdenada, Comparator.comparingDouble(AtividadeDeFerias::getNota).reversed());
+        
         return listaOrdenada;
     }
 
